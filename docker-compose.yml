@@ -1,0 +1,48 @@
+version: "3.8"
+services:
+ # boot logger and server first then  use:
+ # docker-compose up -d --scale client=4
+
+   logger:
+        build: 
+            context: ./logger
+            dockerfile: Dockerfile
+        networks: 
+            skynet_backend:
+                ipv4_address: 192.168.10.20
+
+    
+   server:
+        command: ["app" , "-logaddr=192.168.10.20:61112"]
+        build: 
+            context: ./server
+            dockerfile: Dockerfile
+        networks:
+            skynet_backend:
+            skynet_frontend:
+                ipv4_address: 192.168.1.10
+        depends_on: 
+            - logger
+
+   client:
+        image: task4-client
+        command: -raddr=192.168.1.10:61111 -delay=1000
+        networks: 
+            - skynet_frontend
+        depends_on: 
+            - server
+
+
+      
+networks:
+    skynet_frontend:
+        driver: bridge
+        ipam: 
+            config: 
+                - subnet: 192.168.1.0/24
+            
+    skynet_backend:
+        driver: bridge
+        ipam: 
+            config: 
+                - subnet: 192.168.10.0/24
