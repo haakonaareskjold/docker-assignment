@@ -4,7 +4,7 @@ services:
  # docker-compose up -d --scale client=4
 
    logger:
-        build: 
+        build:
             context: ./logger
             dockerfile: Dockerfile
         networks: 
@@ -13,20 +13,22 @@ services:
 
     
    server:
-        command: ["app" , "-logaddr=192.168.10.20:61112"]
-        build: 
+        build:
             context: ./server
             dockerfile: Dockerfile
         networks:
             skynet_backend:
             skynet_frontend:
                 ipv4_address: 192.168.1.10
+        entrypoint: ["app" , "-logaddr=192.168.10.20:61112"]
         depends_on: 
             - logger
 
    client:
-        image: task4-client
-        command: -raddr=192.168.1.10:61111 -delay=1000
+        build:
+            context: ./client
+            dockerfile: Dockerfile
+        entrypoint: ["app", "-raddr=192.168.1.10:61111", "-delay=1000"]
         networks: 
             - skynet_frontend
         depends_on: 
