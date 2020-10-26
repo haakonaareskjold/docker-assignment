@@ -1,70 +1,3 @@
-# Lab 7: Introduction to Docker
-
-| Lab 7: | Introduction to Docker |
-| ---------------------    | --------------------- |
-| Subject:                 | DAT320 Operating Systems and Systems Programming |
-| Deadline:                | **November 1, 2020 23:59** |
-| Expected effort:         | 8-10 hours |
-| Grading:                 | Pass/fail |
-| Submission:              | Individually |
-
-## Table of Contents
-
-1. [Introduction](#introduction)
-2. [Getting Started with Docker](#getting-started-with-docker)
-3. [Note for Windows Users](#note-for-windows-users)
-4. [Resources](#resources)
-5. [Tasks](#tasks)
-6. [Evaluation](#evaluation)
-7. [Task 1: Single Client and Server](#task-1-single-client-and-server)
-8. [Task 2: Multiple Clients](#task-2-multiple-clients)
-9. [Task 3: Logger](#task-3-logger)
-10. [Task 4: Docker Compose](#task-4-docker-compose)
-
-## Introduction
-
-This lab serves as a brief introduction to Docker.
-Docker is a tool for running software in containers, which are similar to lightweight virtual machines (VM).
-In the upcoming labs, several tasks may require you to run executables that communicate over the network.
-For these purposes prototyping and fast deployment are important, which are offered by Docker.
-
-## Getting Started with Docker
-
-First of all you need to [install Docker](https://docs.docker.com/get-docker/).
-We also recommend going through steps one and two of the [Docker introductory tutorial](https://docs.docker.com/get-started/).
-
-### Note for Windows Users
-
-Setting up Docker  in Windows may require some effort due to license/software limitations.
-There are three versions of Docker you can use in Windows, listed below in order of preference:
-
-- Docker Desktop [requires Windows 10 Pro/Enterprise/Education](https://docs.docker.com/docker-for-windows/install/#system-requirements).
-  It also requires the use of Hyper-V, which apparently conflicts with VirtualBox.
-  If either of these are a problem, look at the options below.
-- If you do not have the appropriate Windows license or cannot use Hyper-V, you can try to install [Docker Desktop using the WSL 2 backend](https://docs.docker.com/docker-for-windows/wsl/) instead.
-- Finally if neither of the above solutions work for you, you can try installing the legacy [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/) application instead.
-
-## Resources
-
-Below we list some useful resources for this lab.
-
-- [Installing Docker](https://docs.docker.com/get-docker/)
-- [Docker introductory tutorial](https://docs.docker.com/get-started/)
-- [The Go Blog: Deploying Go servers with Docker](https://blog.golang.org/docker).
-  Could be useful for writing Dockerfiles.
-- The [Docker reference documentation](https://docs.docker.com/reference/), in particular the [Dockerfile reference](https://docs.docker.com/engine/reference/builder/) and [compose file reference](https://docs.docker.com/compose/compose-file/).
-- The [documentation for the `docker`](https://docs.docker.com/engine/reference/commandline/docker/) command.
-  Most of this information can also be found by using the `--help` flag, e.g. by running commands such as those below:
-
-```console
-docker --help
-```
-
-Or
-
-```console
-docker run --help
-```
 
 ## Tasks
 
@@ -78,9 +11,6 @@ These applications have the following functionalities:
 
 You may find it beneficial to create shell scripts or a Makefile to simplify building and running the applications and Docker networks/images in the tasks below, rather than typing the commands every time since they can become rather long.
 
-### Evaluation
-
-To submit this lab you should demonstrate each of the scenarios below to one of the teaching assistants.
 
 ### Task 1: Single Client and Server
 
